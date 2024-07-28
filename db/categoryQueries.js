@@ -15,8 +15,22 @@ async function deleteCategoryById(categoryId) {
   ]);
 }
 
+async function getProductsByCategory(categoryId) {
+  const query = `
+      SELECT products.*, product_categories.name AS category_name
+      FROM products
+      LEFT JOIN product_categories ON products.product_categories_id = product_categories.id
+      WHERE ($1::INTEGER IS NULL OR product_categories.id = $1)
+  `;
+  const { rows } = await pool.query(query, [
+    categoryId ? parseInt(categoryId, 10) : null,
+  ]);
+  return rows;
+}
+
 module.exports = {
   addNewCategory,
   getAllCategories,
   deleteCategoryById,
+  getProductsByCategory,
 };

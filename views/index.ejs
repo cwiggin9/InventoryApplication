@@ -27,6 +27,15 @@
             </div>
         </div> 
     </div>
+    <form action="/" method="GET">
+        <label for="category">Filter by Category:</label>
+        <select name="category" id="category" onchange="this.form.submit()">
+            <option value="">All Categories</option>
+            <% categories.forEach(category => { %>
+                <option value="<%= category.id %>" <%= category.id == selectedCategory ? 'selected' : '' %>><%= category.name %></option>
+            <% }) %>
+        </select>
+    </form>
     <h1>Product List</h1>
     <ul>
         <% products.forEach(product => { %>
