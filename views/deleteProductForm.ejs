@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+</head>
+<body>
+    <h1>Delete Product</h1>
+    <form action="/products/delete" method="POST">
+        <label for="productId">Select Product:</label>
+        <select name="productId" id="productId" required>
+            <% products.forEach(product => { %>
+                <option value="<%= product.id %>"><%= product.name %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

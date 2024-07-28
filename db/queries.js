@@ -20,6 +20,10 @@ async function getAllCategories() {
   return rows;
 }
 
+async function deleteProductById(productId) {
+  await pool.query("DELETE FROM products WHERE id = $1", [productId]);
+}
+
 async function deleteCategoryById(categoryId) {
   await pool.query("DELETE FROM product_categories WHERE id = $1", [
     categoryId,
@@ -32,4 +36,5 @@ module.exports = {
   addNewCategory,
   getAllCategories,
   deleteCategoryById,
+  deleteProductById,
 };
