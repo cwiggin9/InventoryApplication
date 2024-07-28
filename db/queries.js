@@ -20,9 +20,16 @@ async function getAllCategories() {
   return rows;
 }
 
+async function deleteCategoryById(categoryId) {
+  await pool.query("DELETE FROM product_categories WHERE id = $1", [
+    categoryId,
+  ]);
+}
+
 module.exports = {
   addNewProduct,
   getAllProducts,
   addNewCategory,
-  getAllCategories
+  getAllCategories,
+  deleteCategoryById,
 };
