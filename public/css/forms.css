@@ -1,3 +1,7 @@
+body {
+    margin: 20px;
+}
+
 form {
     background-color: #fff;
     padding: 20px;
@@ -43,4 +47,20 @@ form button[type="submit"]:hover {
     form {
         width: 90%;
     }
+}
+
+a.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+a.back-button:hover {
+    background-color: #0056b3;
 }
