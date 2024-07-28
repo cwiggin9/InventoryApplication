@@ -3,10 +3,12 @@ const express = require("express");
 const app = express();
 const productsRouter = require("./routes/productsRouter");
 const categoriesRouter = require("./routes/categoriesRouter");
-const { getAllProducts } = require("./db/queries");
+const { getAllProducts } = require("./db/productQueries");
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static("public"));
 
 app.use("/products", productsRouter);
 app.use("/categories", categoriesRouter);

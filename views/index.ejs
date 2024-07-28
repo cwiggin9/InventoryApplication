@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Category 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/categories/add">Add Category</a>
+                <a href="/categories/delete">Delete Category</a>
+            </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">Product 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/products/add">Add Product</a>
+                <a href="/products/delete">Delete Product</a>
+            </div>
+        </div> 
+    </div>
     <h1>Product List</h1>
     <ul>
         <% products.forEach(product => { %>
             <li>
-                <%= product.name %> (Price: $<%= product.price %>, Quantity: <%= product.quantity %>, Category: <%= product.category_name %>)
+                <strong><%= product.name %></strong><br>
+                Price: $<%= product.price %><br>
+                Quantity: <%= product.quantity %><br>
+                Category: <%= product.category_name %>
             </li>
         <% }) %>
     </ul>
-    <a href="/products/add">Add Product</a>
-    <a href="/categories/add">Add Category</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const db = require("../db/queries");
+const db = require("../db/productQueries");
 
 async function renderForm(req, res) {
   try {

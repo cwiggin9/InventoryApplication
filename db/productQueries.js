@@ -8,23 +8,8 @@ async function addNewProduct(name, price, quantity, categoryId) {
   await pool.query(query, [name, price, quantity, categoryId]);
 }
 
-async function addNewCategory(name) {
-  await pool.query("INSERT INTO product_categories (name) VALUES ($1)", [name]);
-}
-
-async function getAllCategories() {
-  const { rows } = await pool.query("SELECT * FROM product_categories");
-  return rows;
-}
-
 async function deleteProductById(productId) {
   await pool.query("DELETE FROM products WHERE id = $1", [productId]);
-}
-
-async function deleteCategoryById(categoryId) {
-  await pool.query("DELETE FROM product_categories WHERE id = $1", [
-    categoryId,
-  ]);
 }
 
 async function getAllProducts() {
@@ -46,11 +31,14 @@ async function getAllProducts() {
   return rows;
 }
 
+async function getAllCategories() {
+  const { rows } = await pool.query("SELECT * FROM product_categories");
+  return rows;
+}
+
 module.exports = {
   addNewProduct,
-  getAllProducts,
-  addNewCategory,
-  getAllCategories,
-  deleteCategoryById,
   deleteProductById,
+  getAllProducts,
+  getAllCategories,
 };

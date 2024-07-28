@@ -1,4 +1,4 @@
-const db = require("../db/queries");
+const db = require("../db/categoryQueries");
 
 async function renderAddForm(req, res) {
   try {
@@ -15,8 +15,12 @@ async function saveCategoryHandler(req, res) {
     await db.addNewCategory(name);
     res.redirect("/");
   } catch (error) {
-    console.error("Error saving category:", error);
-    res.status(500).send("Internal Server Error");
+    if (error.code === "23505") {
+      res.status(400).send("Category name already exists.");
+    } else {
+      console.error("Error saving category:", error);
+      res.status(500).send("Internal Server Error");
+    }
   }
 }
 
