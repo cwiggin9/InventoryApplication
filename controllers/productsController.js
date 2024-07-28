@@ -2,6 +2,8 @@ const db = require("../db/queries");
 
 async function renderForm(req, res) {
   try {
+    // Display categories in a select element
+    // & select what category the product belongs to
     const categories = await db.getAllCategories();
     res.render("../views/addProductForm", { categories });
   } catch (error) {

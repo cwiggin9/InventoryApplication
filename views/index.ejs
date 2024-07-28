@@ -9,7 +9,9 @@
     <h1>Product List</h1>
     <ul>
         <% products.forEach(product => { %>
-            <li><%= product.name %> (Price: $<%= product.price %>, Quantity: <%= product.quantity %>)</li>
+            <li>
+                <%= product.name %> (Price: $<%= product.price %>, Quantity: <%= product.quantity %>, Category: <%= product.category_name %>)
+            </li>
         <% }) %>
     </ul>
     <a href="/products/add">Add Product</a>
